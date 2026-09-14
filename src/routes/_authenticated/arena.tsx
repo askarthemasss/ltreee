@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useQuery } from "@tanstack/react-query";
-import { ArrowDown, ArrowUp, Eye, EyeOff, ExternalLink, Loader2, Pencil, Plus, Rocket, Trash2, Users } from "lucide-react";
+import { ArrowDown, ArrowUp, Eye, EyeOff, ExternalLink, Loader2, Pencil, Plus, Rocket, Trash2, Trophy, Users } from "lucide-react";
 import { toast } from "sonner";
 import { DashboardLayout } from "@/components/dashboard/DashboardLayout";
 import { ProjectFormDialog } from "@/components/dashboard/ProjectFormDialog";
@@ -88,6 +88,12 @@ function ArenaEditorPage() {
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
+          <Button variant="ghost" size="sm" asChild>
+            <Link to="/leaderboard">
+              <Trophy className="size-4" aria-hidden="true" />
+              Leaderboard
+            </Link>
+          </Button>
           <Button variant="secondary" size="sm" asChild>
             <a href={`/${profile.username}?view=arena`} target="_blank" rel="noopener noreferrer">
               <ExternalLink className="size-4" aria-hidden="true" />
@@ -168,6 +174,11 @@ function ArenaEditorPage() {
                       Hidden
                     </span>
                   ) : null}
+                  {project.on_leaderboard ? (
+                    <span className="shrink-0 rounded-full bg-primary/15 px-2 py-0.5 text-[0.65rem] text-primary">
+                      On leaderboard
+                    </span>
+                  ) : null}
                 </div>
                 <p className="mt-0.5 truncate text-xs text-muted-foreground">
                   {project.demo_url || project.repo_url || "No links yet"}
@@ -210,6 +221,29 @@ function ArenaEditorPage() {
                   ) : (
                     <EyeOff className="size-4" aria-hidden="true" />
                   )}
+                </Button>
+                <Button
+                  size="icon"
+                  variant={project.on_leaderboard ? "secondary" : "ghost"}
+                  aria-label={
+                    project.on_leaderboard
+                      ? "Remove from the LTReee leaderboard"
+                      : "Add to the LTReee leaderboard"
+                  }
+                  aria-pressed={project.on_leaderboard}
+                  onClick={async () => {
+                    await mutations.update.mutateAsync({
+                      id: project.id,
+                      on_leaderboard: !project.on_leaderboard,
+                    });
+                    toast.success(
+                      project.on_leaderboard
+                        ? "Removed from the leaderboard"
+                        : "Added to the leaderboard",
+                    );
+                  }}
+                >
+                  <Trophy className="size-4" aria-hidden="true" />
                 </Button>
                 <Button
                   size="icon"

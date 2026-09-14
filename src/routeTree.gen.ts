@@ -18,6 +18,7 @@ import { Route as DevelopersRouteImport } from './routes/developers'
 import { Route as ExamplesRouteImport } from './routes/examples'
 import { Route as FreeLinkInBioRouteImport } from './routes/free-link-in-bio'
 import { Route as InstagramBioLinkRouteImport } from './routes/instagram-bio-link'
+import { Route as LeaderboardRouteImport } from './routes/leaderboard'
 import { Route as LinkInBioRouteImport } from './routes/link-in-bio'
 import { Route as LinktreeAlternativeRouteImport } from './routes/linktree-alternative'
 import { Route as McpRouteImport } from './routes/mcp'
@@ -82,6 +83,11 @@ const FreeLinkInBioRoute = FreeLinkInBioRouteImport.update({
 const InstagramBioLinkRoute = InstagramBioLinkRouteImport.update({
   id: '/instagram-bio-link',
   path: '/instagram-bio-link',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LeaderboardRoute = LeaderboardRouteImport.update({
+  id: '/leaderboard',
+  path: '/leaderboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LinkInBioRoute = LinkInBioRouteImport.update({
@@ -203,6 +209,7 @@ export interface FileRoutesByFullPath {
   '/examples': typeof ExamplesRoute
   '/free-link-in-bio': typeof FreeLinkInBioRoute
   '/instagram-bio-link': typeof InstagramBioLinkRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/link-in-bio': typeof LinkInBioRoute
   '/linktree-alternative': typeof LinktreeAlternativeRoute
   '/mcp': typeof McpRoute
@@ -234,6 +241,7 @@ export interface FileRoutesByTo {
   '/examples': typeof ExamplesRoute
   '/free-link-in-bio': typeof FreeLinkInBioRoute
   '/instagram-bio-link': typeof InstagramBioLinkRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/link-in-bio': typeof LinkInBioRoute
   '/linktree-alternative': typeof LinktreeAlternativeRoute
   '/mcp': typeof McpRoute
@@ -267,6 +275,7 @@ export interface FileRoutesById {
   '/examples': typeof ExamplesRoute
   '/free-link-in-bio': typeof FreeLinkInBioRoute
   '/instagram-bio-link': typeof InstagramBioLinkRoute
+  '/leaderboard': typeof LeaderboardRoute
   '/link-in-bio': typeof LinkInBioRoute
   '/linktree-alternative': typeof LinktreeAlternativeRoute
   '/mcp': typeof McpRoute
@@ -300,6 +309,7 @@ export interface FileRouteTypes {
     | '/examples'
     | '/free-link-in-bio'
     | '/instagram-bio-link'
+    | '/leaderboard'
     | '/link-in-bio'
     | '/linktree-alternative'
     | '/mcp'
@@ -331,6 +341,7 @@ export interface FileRouteTypes {
     | '/examples'
     | '/free-link-in-bio'
     | '/instagram-bio-link'
+    | '/leaderboard'
     | '/link-in-bio'
     | '/linktree-alternative'
     | '/mcp'
@@ -363,6 +374,7 @@ export interface FileRouteTypes {
     | '/examples'
     | '/free-link-in-bio'
     | '/instagram-bio-link'
+    | '/leaderboard'
     | '/link-in-bio'
     | '/linktree-alternative'
     | '/mcp'
@@ -396,6 +408,7 @@ export interface RootRouteChildren {
   ExamplesRoute: typeof ExamplesRoute
   FreeLinkInBioRoute: typeof FreeLinkInBioRoute
   InstagramBioLinkRoute: typeof InstagramBioLinkRoute
+  LeaderboardRoute: typeof LeaderboardRoute
   LinkInBioRoute: typeof LinkInBioRoute
   LinktreeAlternativeRoute: typeof LinktreeAlternativeRoute
   McpRoute: typeof McpRoute
@@ -476,6 +489,13 @@ declare module '@tanstack/react-router' {
       path: '/instagram-bio-link'
       fullPath: '/instagram-bio-link'
       preLoaderRoute: typeof InstagramBioLinkRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/leaderboard': {
+      id: '/leaderboard'
+      path: '/leaderboard'
+      fullPath: '/leaderboard'
+      preLoaderRoute: typeof LeaderboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/link-in-bio': {
@@ -659,6 +679,7 @@ const rootRouteChildren: RootRouteChildren = {
   ExamplesRoute: ExamplesRoute,
   FreeLinkInBioRoute: FreeLinkInBioRoute,
   InstagramBioLinkRoute: InstagramBioLinkRoute,
+  LeaderboardRoute: LeaderboardRoute,
   LinkInBioRoute: LinkInBioRoute,
   LinktreeAlternativeRoute: LinktreeAlternativeRoute,
   McpRoute: McpRoute,
