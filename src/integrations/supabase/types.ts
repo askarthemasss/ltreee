@@ -259,6 +259,73 @@ export type Database = {
           },
         ]
       }
+      project_vote_totals: {
+        Row: {
+          downvotes: number
+          project_id: string
+          score: number
+          updated_at: string
+          upvotes: number
+        }
+        Insert: {
+          downvotes?: number
+          project_id: string
+          score?: number
+          updated_at?: string
+          upvotes?: number
+        }
+        Update: {
+          downvotes?: number
+          project_id?: string
+          score?: number
+          updated_at?: string
+          upvotes?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_vote_totals_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: true
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      project_votes: {
+        Row: {
+          created_at: string
+          id: string
+          project_id: string
+          updated_at: string
+          value: number
+          voter_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          project_id: string
+          updated_at?: string
+          value: number
+          voter_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          project_id?: string
+          updated_at?: string
+          value?: number
+          voter_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "project_votes_project_id_fkey"
+            columns: ["project_id"]
+            isOneToOne: false
+            referencedRelation: "projects"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       projects: {
         Row: {
           cover_path: string | null
@@ -268,6 +335,7 @@ export type Database = {
           display_order: number
           id: string
           is_visible: boolean
+          on_leaderboard: boolean
           profile_id: string
           repo_url: string | null
           tags: string[]
@@ -282,6 +350,7 @@ export type Database = {
           display_order?: number
           id?: string
           is_visible?: boolean
+          on_leaderboard?: boolean
           profile_id: string
           repo_url?: string | null
           tags?: string[]
@@ -296,6 +365,7 @@ export type Database = {
           display_order?: number
           id?: string
           is_visible?: boolean
+          on_leaderboard?: boolean
           profile_id?: string
           repo_url?: string | null
           tags?: string[]
