@@ -124,6 +124,11 @@ const GUIDES = [
     body: "Turn your page into a project showcase with demos, repos and tracking.",
   },
   {
+    to: "/leaderboard" as const,
+    title: "Developer leaderboard",
+    body: "Community-ranked projects from LTReee developers. Sign in and upvote your favourites.",
+  },
+  {
     to: "/examples" as const,
     title: "Examples",
     body: "See a real profile layout you can copy for your own page.",
@@ -143,6 +148,12 @@ function Landing() {
           LTReee
         </Link>
         <nav className="flex items-center gap-2">
+          <Link
+            to="/leaderboard"
+            className="rounded-lg px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground"
+          >
+            Leaderboard
+          </Link>
           <ThemeToggle />
           {isAuthenticated ? (
             <Button asChild size="sm">

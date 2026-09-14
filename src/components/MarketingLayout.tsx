@@ -19,6 +19,12 @@ export function MarketingLayout({ children }: { children: ReactNode }) {
           LTReee
         </Link>
         <div className="flex items-center gap-2">
+          <Link
+            to="/leaderboard"
+            className="rounded-lg px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground"
+          >
+            Leaderboard
+          </Link>
           <ThemeToggle />
           <Button asChild size="sm">
             {isAuthenticated ? (
@@ -81,6 +87,9 @@ export function MarketingFooter() {
           </Link>
           <Link to="/developers" className="hover:text-foreground">
             For developers
+          </Link>
+          <Link to="/leaderboard" className="hover:text-foreground">
+            Leaderboard
           </Link>
           <Link to="/examples" className="hover:text-foreground">
             Examples
