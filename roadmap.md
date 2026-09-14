@@ -17,3 +17,7 @@
 - dashboard /arena editor: add/edit/hide/reorder/delete, cover uploads, live preview
 - per-project view/demo/code click analytics on /analytics
 - [x] Public Arena redesigned as a full-width cosmic observatory with an animated event horizon and connected project circuit
+
+## Leaderboard (done)
+- project opt-in flag, private votes table, public totals via triggers
+- public /leaderboard page with up/down voting for signed-in users
