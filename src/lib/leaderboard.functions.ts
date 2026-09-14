@@ -73,12 +73,19 @@ export const getLeaderboard = createServerFn({ method: "GET" }).handler(
       .eq("profiles.is_published", true)
       .limit(200);
 
-    if (error || !data) return [];
+    if (error || !data) {
+      if (error) console.error("[leaderboard]", error.message);
+      return [];
+    }
+
+    const first = <T,>(value: T | T[] | null): T | null =>
+      Array.isArray(value) ? (value[0] ?? null) : value;
 
     const rows = data as unknown as Row[];
     return rows
-      .filter((r) => r.profiles)
-      .map((r) => ({
+      .map((r) => ({ r, p: first(r.profiles), t: first(r.project_vote_totals) }))
+      .filter((x): x is { r: Row; p: NonNullable<Row["profiles"]>; t: null | { upvotes: number; downvotes: number; score: number } } => Boolean(x.p))
+      .map(({ r, p, t }) => ({
         id: r.id,
         title: r.title,
         description: r.description,
@@ -87,13 +94,13 @@ export const getLeaderboard = createServerFn({ method: "GET" }).handler(
         cover_path: r.cover_path,
         tags: r.tags ?? [],
         created_at: r.created_at,
-        username: r.profiles!.username,
-        display_name: r.profiles!.display_name || r.profiles!.username,
-        avatar_url: r.profiles!.avatar_url,
-        owner_user_id: r.profiles!.user_id,
-        upvotes: r.project_vote_totals?.upvotes ?? 0,
-        downvotes: r.project_vote_totals?.downvotes ?? 0,
-        score: r.project_vote_totals?.score ?? 0,
+        username: p.username,
+        display_name: p.display_name || p.username,
+        avatar_url: p.avatar_url,
+        owner_user_id: p.user_id,
+        upvotes: t?.upvotes ?? 0,
+        downvotes: t?.downvotes ?? 0,
+        score: t?.score ?? 0,
       }))
       .sort(
         (a, b) =>
