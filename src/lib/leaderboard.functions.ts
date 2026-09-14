@@ -53,7 +53,10 @@ type Row = {
     avatar_url: string | null;
     user_id: string;
   } | null;
-  project_vote_totals: { upvotes: number; downvotes: number; score: number } | null;
+  project_vote_totals:
+    | { upvotes: number; downvotes: number; score: number }
+    | { upvotes: number; downvotes: number; score: number }[]
+    | null;
 };
 
 /** Public ranked list of projects opted into the LTReee leaderboard. */
