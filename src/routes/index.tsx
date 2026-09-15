@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Link2, Pencil, Share2, Sparkles } from "lucide-react";
+import { ArrowRight, Link2, Pencil, Share2, Sparkles, Trophy } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { PhoneFrame } from "@/components/PhoneFrame";
 import { PublicProfileView } from "@/components/PublicProfileView";
