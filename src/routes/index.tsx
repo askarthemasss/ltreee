@@ -205,7 +205,10 @@ function Landing() {
               </Button>
 
               <Button asChild size="lg" variant="secondary">
-                <a href="#example">Explore an example</a>
+                <Link to="/leaderboard">
+                  <Trophy className="size-4" aria-hidden="true" />
+                  Check out the leaderboard
+                </Link>
               </Button>
             </div>
             <p className="mt-4 text-xs text-muted-foreground">Free. Set up in about two minutes.</p>
@@ -216,6 +219,29 @@ function Landing() {
               <PublicProfileView profile={EXAMPLE_PROFILE} links={EXAMPLE_LINKS} compact />
             </PhoneFrame>
           </div>
+        </section>
+
+        <section className="mx-auto w-full max-w-6xl px-5 pb-4" aria-label="Developer leaderboard">
+          <Link
+            to="/leaderboard"
+            className="group flex flex-wrap items-center justify-between gap-4 rounded-2xl glass-strong px-6 py-5 transition-colors hover:bg-accent/10 sm:px-8"
+          >
+            <div className="flex items-center gap-4">
+              <span className="grid size-11 shrink-0 place-items-center rounded-full border border-primary/40 text-primary">
+                <Trophy className="size-5" aria-hidden="true" />
+              </span>
+              <div>
+                <h2 className="font-display text-lg font-semibold sm:text-xl">Developer leaderboard</h2>
+                <p className="mt-1 text-sm text-muted-foreground">
+                  Projects ranked by the community. See who's on top — and push your favourites up.
+                </p>
+              </div>
+            </div>
+            <span className="inline-flex items-center gap-2 text-sm font-medium text-primary">
+              View leaderboard
+              <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+            </span>
+          </Link>
         </section>
 
         <section className="mx-auto w-full max-w-6xl px-5 py-16" aria-labelledby="how">
