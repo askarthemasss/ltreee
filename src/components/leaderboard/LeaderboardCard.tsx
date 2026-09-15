@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { ChevronDown, ChevronUp, ExternalLink, Github } from "lucide-react";
+import { ArrowBigDown, ArrowBigUp, ExternalLink, Github } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { coverSrc } from "@/lib/project-cover";
 import type { LeaderboardEntry } from "@/lib/leaderboard.functions";
 
@@ -15,34 +16,58 @@ type Props = {
 
 export function LeaderboardCard({ entry, rank, myVote, isOwner, pending, onVote }: Props) {
   const cover = coverSrc(entry.cover_path);
+  const voteDisabled = isOwner || pending;
 
   return (
     <article className="flex gap-4 rounded-2xl glass p-4 sm:p-5">
-      <div className="flex w-12 shrink-0 flex-col items-center gap-1">
+      <div
+        className={cn(
+          "flex w-14 shrink-0 flex-col items-center gap-0.5 rounded-2xl bg-secondary/50 py-1.5 transition-opacity",
+          pending && "animate-pulse opacity-60",
+        )}
+      >
         <Button
           size="icon"
-          variant={myVote === 1 ? "default" : "ghost"}
-          aria-label={myVote === 1 ? `Remove your upvote from ${entry.title}` : `Upvote ${entry.title}`}
+          variant="ghost"
+          title={isOwner ? "You cannot vote on your own project" : undefined}
+          aria-label={
+            myVote === 1 ? `Remove your upvote from ${entry.title}` : `Upvote ${entry.title}`
+          }
           aria-pressed={myVote === 1}
-          disabled={isOwner || pending}
+          disabled={voteDisabled}
           onClick={() => onVote(1)}
+          className={cn("size-9 rounded-xl", myVote === 1 && "text-primary hover:text-primary")}
         >
-          <ChevronUp className="size-4" aria-hidden="true" />
+          <ArrowBigUp
+            className={cn("size-6 transition-transform", myVote === 1 && "fill-primary")}
+            aria-hidden="true"
+          />
         </Button>
-        <span className="text-base font-semibold tabular-nums" aria-label={`Score ${entry.score}`}>
+        <span
+          className={cn(
+            "text-base font-semibold tabular-nums",
+            myVote !== 0 && "text-primary",
+          )}
+          aria-label={`Score ${entry.score}`}
+        >
           {entry.score}
         </span>
         <Button
           size="icon"
-          variant={myVote === -1 ? "default" : "ghost"}
+          variant="ghost"
+          title={isOwner ? "You cannot vote on your own project" : undefined}
           aria-label={
             myVote === -1 ? `Remove your downvote from ${entry.title}` : `Downvote ${entry.title}`
           }
           aria-pressed={myVote === -1}
-          disabled={isOwner || pending}
+          disabled={voteDisabled}
           onClick={() => onVote(-1)}
+          className={cn("size-9 rounded-xl", myVote === -1 && "text-primary hover:text-primary")}
         >
-          <ChevronDown className="size-4" aria-hidden="true" />
+          <ArrowBigDown
+            className={cn("size-6 transition-transform", myVote === -1 && "fill-primary")}
+            aria-hidden="true"
+          />
         </Button>
       </div>
 
@@ -101,12 +126,6 @@ export function LeaderboardCard({ entry, rank, myVote, isOwner, pending, onVote 
                 Code
               </a>
             </Button>
-          ) : null}
-          <span className="text-xs text-muted-foreground">
-            {entry.upvotes} up · {entry.downvotes} down
-          </span>
-          {isOwner ? (
-            <span className="text-xs text-muted-foreground">You cannot vote on your own project</span>
           ) : null}
         </div>
       </div>
