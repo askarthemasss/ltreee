@@ -11,22 +11,22 @@ export function MarketingLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen">
-      <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-6">
-        <Link to="/" className="flex items-center gap-2 font-display text-lg font-semibold">
+      <header className="mx-auto flex w-full max-w-6xl flex-wrap items-center justify-between gap-x-4 gap-y-2 px-5 py-6">
+        <Link to="/" className="flex shrink-0 items-center gap-2 font-display text-lg font-semibold">
           <span className="grid size-8 place-items-center rounded-full border border-primary/40 text-primary">
             <span className="size-2 rounded-full bg-primary" />
           </span>
           LTReee
         </Link>
-        <div className="flex items-center gap-2">
+        <div className="flex min-w-0 items-center gap-1.5 sm:gap-2">
           <Link
             to="/leaderboard"
-            className="rounded-lg px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground"
+            className="hidden rounded-lg px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground sm:block"
           >
             Leaderboard
           </Link>
           <ThemeToggle />
-          <Button asChild size="sm">
+          <Button asChild size="sm" className="px-2.5 sm:px-4">
             {isAuthenticated ? (
               <Link to="/dashboard">Dashboard</Link>
             ) : (
