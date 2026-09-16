@@ -19,12 +19,6 @@ export function MarketingLayout({ children }: { children: ReactNode }) {
           LTReee
         </Link>
         <div className="flex min-w-0 items-center gap-1.5 sm:gap-2">
-          <Link
-            to="/leaderboard"
-            className="hidden rounded-lg px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground sm:block"
-          >
-            Leaderboard
-          </Link>
           <ThemeToggle />
           <Button asChild size="sm" className="px-2.5 sm:px-4">
             {isAuthenticated ? (
