@@ -82,9 +82,6 @@ export function MarketingFooter() {
           <Link to="/developers" className="hover:text-foreground">
             For developers
           </Link>
-          <Link to="/leaderboard" className="hover:text-foreground">
-            Leaderboard
-          </Link>
           <Link to="/examples" className="hover:text-foreground">
             Examples
           </Link>
