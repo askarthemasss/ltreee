@@ -12,16 +12,17 @@ import { PUBLIC_SITE_ORIGIN } from "@/lib/site-url";
 export const Route = createFileRoute("/leaderboard")({
   head: () => ({
     meta: [
-      { title: "Developer Project Leaderboard — LTReee" },
+      { title: "Link-in-Bio Leaderboard for Developers — LTReee" },
       {
         name: "description",
         content:
-          "Browse the top developer projects on LTReee, ranked by community upvotes. Sign in to vote for the builds you like best.",
+          "The link-in-bio leaderboard: top developer projects on LTReee, ranked by community upvotes. Sign in to vote for the builds you like best.",
       },
-      { property: "og:title", content: "Developer Project Leaderboard — LTReee" },
+      { property: "og:title", content: "Link-in-Bio Leaderboard for Developers — LTReee" },
       {
         property: "og:description",
-        content: "Community-ranked developer projects on LTReee. Upvote the builds you love.",
+        content:
+          "The link-in-bio leaderboard for developers: community-ranked projects on LTReee. Upvote the builds you love.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${PUBLIC_SITE_ORIGIN}/leaderboard` },
@@ -65,12 +66,14 @@ function LeaderboardPage() {
       <header className="py-6 text-center">
         <p className="inline-flex items-center gap-2 rounded-full glass px-3 py-1 text-xs text-muted-foreground">
           <Trophy className="size-3.5 text-primary" aria-hidden="true" />
-          Community ranked
+          Link-in-bio leaderboard
         </p>
-        <h1 className="mt-4 font-display text-3xl font-bold sm:text-4xl">Developer leaderboard</h1>
+        <h1 className="mt-4 font-display text-3xl font-bold sm:text-4xl">
+          Link-in-bio leaderboard for developers
+        </h1>
         <p className="mx-auto mt-3 max-w-lg text-sm text-muted-foreground">
-          Projects from LTReee developers, ranked by upvotes minus downvotes. Add yours from your
-          Arena and let the community decide.
+          The link-in-bio leaderboard: projects from LTReee developers, ranked by upvotes minus
+          downvotes. Add yours from your Arena and let the community decide.
         </p>
         {!isAuthenticated ? (
           <Button asChild size="sm" className="mt-5">
