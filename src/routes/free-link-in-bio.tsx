@@ -25,7 +25,7 @@ export const Route = createFileRoute("/free-link-in-bio")({
       {
         name: "keywords",
         content:
-          "free link in bio, free link in bio page, free bio link, free linktree, free link in bio without ads, free bio link generator, free links page, no cost link in bio, free link in bio for instagram, free link in bio for tiktok, free personal link page, create link in bio free",
+          "free link in bio, free link in bio page, free bio link, free linktree, free link in bio without ads, free bio link generator, free links page, no cost link in bio, free link in bio for instagram, free link in bio for tiktok, free personal link page, create link in bio free, free link analytics, free click tracking, free embeddable links widget, free private links, free developer portfolio page, free project showcase, free link in bio leaderboard, free developer arena",
       },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
