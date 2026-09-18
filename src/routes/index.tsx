@@ -21,7 +21,7 @@ export const Route = createFileRoute("/")({
       {
         name: "keywords",
         content:
-          "link in bio, link in bio page, bio link, linkinbio, link app, links app, linktree alternative, free link in bio, free bio link, one link for all socials, personal link page, micro website, links page, link hub, link list page, social media bio link, portfolio link page, developer portfolio link, instagram bio link, tiktok link in bio, youtube bio link, x bio link, bio link generator, bio link creator, make a link in bio, create link page, link tracking, link click analytics, embeddable links widget, links iframe, private links page, project showcase link, dark link in bio",
+          "link in bio, link in bio page, bio link, linkinbio, link app, links app, linktree alternative, free link in bio, free bio link, one link for all socials, personal link page, micro website, links page, link hub, link list page, social media bio link, portfolio link page, developer portfolio link, instagram bio link, tiktok link in bio, youtube bio link, x bio link, bio link generator, bio link creator, make a link in bio, create link page, link tracking, link click analytics, embeddable links widget, links iframe, private links page, project showcase link, dark link in bio, link-in-bio leaderboard, developer leaderboard, developer arena, project showcase for developers, upvote developer projects, build in public, developer project discovery, embed analytics, link in bio analytics, private links manager, link page with projects",
       },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },

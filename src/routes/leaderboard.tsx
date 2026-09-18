@@ -24,6 +24,11 @@ export const Route = createFileRoute("/leaderboard")({
         content:
           "The link-in-bio leaderboard for developers: community-ranked projects on LTReee. Upvote the builds you love.",
       },
+      {
+        name: "keywords",
+        content:
+          "link-in-bio leaderboard, link in bio leaderboard, developer leaderboard, developer project ranking, project upvote, upvote projects, top developer projects, indie hacker projects, build in public showcase, developer project showcase, developer arena, project discovery, ranked projects, community voting, best side projects, developer portfolio ranking, link in bio for developers, ltreee leaderboard",
+      },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${PUBLIC_SITE_ORIGIN}/leaderboard` },
       { name: "twitter:card", content: "summary_large_image" },

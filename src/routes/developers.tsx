@@ -33,7 +33,7 @@ export const Route = createFileRoute("/developers")({
       {
         name: "keywords",
         content:
-          "developer portfolio, developer link in bio, github portfolio page, project showcase, side project showcase, dev portfolio link, indie hacker portfolio, showcase side projects, developer links page, link app for developers, linktree alternative for developers, developer profile page",
+          "developer portfolio, developer link in bio, github portfolio page, project showcase, side project showcase, dev portfolio link, indie hacker portfolio, showcase side projects, developer links page, link app for developers, linktree alternative for developers, developer profile page, developer arena, developer leaderboard, link-in-bio leaderboard, upvote developer projects, project click tracking, project analytics, build in public, top developer projects, developer project ranking",
       },
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESCRIPTION },
