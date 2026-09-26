@@ -12,6 +12,12 @@ import { PUBLIC_SITE_ORIGIN } from "@/lib/site-url";
 export const Route = createFileRoute("/leaderboard")({
   head: () => ({
     meta: [
+      { property: "og:image", content: "https://ltreee.app/og-image.jpg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "LTReee — one link, your whole orbit" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "https://ltreee.app/og-image.jpg" },
       { title: "Link-in-Bio Leaderboard for Developers — LTReee" },
       {
         name: "description",
@@ -31,9 +37,21 @@ export const Route = createFileRoute("/leaderboard")({
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${PUBLIC_SITE_ORIGIN}/leaderboard` },
-      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [{ rel: "canonical", href: `${PUBLIC_SITE_ORIGIN}/leaderboard` }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://ltreee.app/" },
+            { "@type": "ListItem", position: 2, name: "Leaderboard", item: "https://ltreee.app/leaderboard" },
+          ],
+        }),
+      },
+    ],
   }),
   component: LeaderboardPage,
 });

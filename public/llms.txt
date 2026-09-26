@@ -1,0 +1,20 @@
+# LTReee
+
+> LTReee is a free, fast, dark-themed link-in-bio builder for developers, creators and indie hackers. One short link (ltreee.app/username) holds your links, projects, contact info, private links and embeddable widgets.
+
+## Features
+- Link-in-bio page at ltreee.app/username with optional email/phone contact chips
+- Developer Arena: showcase projects with covers, demo and repository links, and visit analytics
+- Link-in-bio leaderboard: community upvote/downvote ranking of developer projects (sign-in required, no self-voting)
+- Embeddable iframe widget: vertical, horizontal, grid and icon layouts; dark, light or transparent themes
+- Private links vault, plus embed view and click analytics
+
+## Pages
+- [Home](https://ltreee.app/): create a free link-in-bio page
+- [Leaderboard](https://ltreee.app/leaderboard): top developer projects ranked by votes
+- [Link in bio guide](https://ltreee.app/link-in-bio)
+- [Free link in bio](https://ltreee.app/free-link-in-bio)
+- [Instagram bio link](https://ltreee.app/instagram-bio-link)
+- [Linktree alternative](https://ltreee.app/linktree-alternative)
+- [For developers](https://ltreee.app/developers)
+- [Example profile](https://ltreee.app/examples)

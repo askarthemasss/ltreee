@@ -9,6 +9,12 @@ const URL = "https://ltreee.app/link-in-bio";
 export const Route = createFileRoute("/link-in-bio")({
   head: () => ({
     meta: [
+      { property: "og:image", content: "https://ltreee.app/og-image.jpg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "LTReee — one link, your whole orbit" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "https://ltreee.app/og-image.jpg" },
       { title: TITLE },
       { name: "description", content: DESCRIPTION },
       {
