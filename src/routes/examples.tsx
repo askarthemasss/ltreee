@@ -14,6 +14,12 @@ const URL = "https://ltreee.app/examples";
 export const Route = createFileRoute("/examples")({
   head: () => ({
     meta: [
+      { property: "og:image", content: "https://ltreee.app/og-image.jpg" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "LTReee — one link, your whole orbit" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:image", content: "https://ltreee.app/og-image.jpg" },
       { title: TITLE },
       { name: "description", content: DESCRIPTION },
       {
@@ -29,6 +35,19 @@ export const Route = createFileRoute("/examples")({
       { name: "twitter:description", content: DESCRIPTION },
     ],
     links: [{ rel: "canonical", href: URL }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Home", item: "https://ltreee.app/" },
+            { "@type": "ListItem", position: 2, name: "Examples", item: "https://ltreee.app/examples" },
+          ],
+        }),
+      },
+    ],
   }),
 
   component: ExamplesPage,
