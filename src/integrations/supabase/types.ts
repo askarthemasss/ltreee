@@ -167,6 +167,8 @@ export type Database = {
           is_published: boolean
           location: string | null
           phone: string | null
+          seo_description: string | null
+          seo_title: string | null
           show_email: boolean
           show_phone: boolean
           updated_at: string
@@ -184,6 +186,8 @@ export type Database = {
           is_published?: boolean
           location?: string | null
           phone?: string | null
+          seo_description?: string | null
+          seo_title?: string | null
           show_email?: boolean
           show_phone?: boolean
           updated_at?: string
@@ -201,6 +205,8 @@ export type Database = {
           is_published?: boolean
           location?: string | null
           phone?: string | null
+          seo_description?: string | null
+          seo_title?: string | null
           show_email?: boolean
           show_phone?: boolean
           updated_at?: string
@@ -437,6 +443,8 @@ export type Database = {
           is_published: boolean | null
           location: string | null
           phone: string | null
+          seo_description: string | null
+          seo_title: string | null
           user_id: string | null
           username: string | null
           website_url: string | null
