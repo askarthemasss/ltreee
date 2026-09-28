@@ -32,6 +32,8 @@ export type PublicProfile = {
   website_url: string | null;
   email: string | null;
   phone: string | null;
+  seo_title: string | null;
+  seo_description: string | null;
   links: PublicLink[];
   projects: PublicProject[];
 };
@@ -59,7 +61,7 @@ export const getPublicProfile = createServerFn({ method: "GET" })
     const { data: profile } = await supabase
       .from("public_profiles" as never)
       .select(
-        "id, user_id, username, display_name, bio, avatar_url, location, website_url, email, phone",
+        "id, user_id, username, display_name, bio, avatar_url, location, website_url, email, phone, seo_title, seo_description",
       )
       .eq("username", data.username)
       .maybeSingle();
@@ -76,6 +78,8 @@ export const getPublicProfile = createServerFn({ method: "GET" })
       website_url: string | null;
       email: string | null;
       phone: string | null;
+      seo_title: string | null;
+      seo_description: string | null;
     };
 
     const { data: links } = await supabase
@@ -103,6 +107,8 @@ export const getPublicProfile = createServerFn({ method: "GET" })
       website_url: row.website_url,
       email: row.email,
       phone: row.phone,
+      seo_title: row.seo_title ?? null,
+      seo_description: row.seo_description ?? null,
       links: links ?? [],
       projects: (projects ?? []) as PublicProject[],
     };
