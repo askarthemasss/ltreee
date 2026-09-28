@@ -12,6 +12,7 @@ import { DashboardLayout } from "@/components/dashboard/DashboardLayout";
 import { PreviewPane } from "@/components/dashboard/PreviewPane";
 import { ProfileEditor, type ProfileDraft } from "@/components/dashboard/ProfileEditor";
 import { LinkManager } from "@/components/dashboard/LinkManager";
+import { SeoGenerator } from "@/components/dashboard/SeoGenerator";
 import { UsernameInput, type UsernameStatus } from "@/components/dashboard/UsernameInput";
 import {
   useCreateProfile,
@@ -247,6 +248,12 @@ function Editor({ profile }: { profile: NonNullable<ReturnType<typeof useProfile
             await links.remove.mutateAsync(id);
           }}
           onReorder={(ordered: LinkRow[]) => links.reorder.mutate(ordered)}
+        />
+
+        <SeoGenerator
+          profile={profile}
+          details={{ display_name: draft.display_name, bio: draft.bio, location: draft.location }}
+          linkTitles={activeLinks.map((l) => l.title)}
         />
 
         <AccountSettings profile={profile} />

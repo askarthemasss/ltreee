@@ -33,12 +33,13 @@ export const Route = createFileRoute("/$username")({
     const url = isArena
       ? `${profileUrl(profile.username)}?view=arena`
       : profileUrl(profile.username);
-    const fullDescription = isArena
+    const baseDescription = isArena
       ? `${name}'s Developer's Arena on LTReee — ${projects.length} project${projects.length === 1 ? "" : "s"} with live demos and source code.`
       : projects.length
         ? `${description} Explore ${projects.length} project${projects.length === 1 ? "" : "s"} in their Developer's Arena.`
         : description;
-    const title = isArena ? `${name} — Developer's Arena — LTReee` : `${name} — LTReee`;
+    const fullDescription = !isArena && profile.seo_description ? profile.seo_description : baseDescription;
+    const title = isArena ? `${name} — Developer's Arena — LTReee` : profile.seo_title || `${name} — LTReee`;
     return {
       meta: [
         { title },
