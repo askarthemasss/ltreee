@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Loader2, Trophy } from "lucide-react";
+import { Eye, Loader2, Trophy } from "lucide-react";
 import { toast } from "sonner";
 import { MarketingLayout } from "@/components/MarketingLayout";
 import { LeaderboardCard } from "@/components/leaderboard/LeaderboardCard";
 import { Button } from "@/components/ui/button";
 import { useSession } from "@/hooks/useSession";
-import { useLeaderboard, useMyVotes, useVote } from "@/hooks/useLeaderboard";
+import {
+  useLeaderboard,
+  useLeaderboardViews,
+  useMyVotes,
+  useVote,
+} from "@/hooks/useLeaderboard";
 import { PUBLIC_SITE_ORIGIN } from "@/lib/site-url";
 
 export const Route = createFileRoute("/leaderboard")({
