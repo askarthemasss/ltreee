@@ -102,6 +102,21 @@ export type Database = {
           },
         ]
       }
+      leaderboard_views: {
+        Row: {
+          created_at: string
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+        }
+        Relationships: []
+      }
       links: {
         Row: {
           created_at: string
