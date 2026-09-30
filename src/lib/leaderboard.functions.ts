@@ -111,6 +111,18 @@ export const getLeaderboard = createServerFn({ method: "GET" }).handler(
   },
 );
 
+/** Total number of recorded leaderboard page visits. */
+export const getLeaderboardViews = createServerFn({ method: "GET" }).handler(
+  async (): Promise<{ views: number }> => {
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const { count, error } = await supabaseAdmin
+      .from("leaderboard_views" as never)
+      .select("id", { count: "exact", head: true });
+    if (error) return { views: 0 };
+    return { views: count ?? 0 };
+  },
+);
+
 /** The signed-in user's votes, keyed by project id. */
 export const getMyVotes = createServerFn({ method: "GET" })
   .middleware([requireSupabaseAuth])

@@ -1,12 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Loader2, Trophy } from "lucide-react";
+import { Eye, Loader2, Trophy } from "lucide-react";
 import { toast } from "sonner";
 import { MarketingLayout } from "@/components/MarketingLayout";
 import { LeaderboardCard } from "@/components/leaderboard/LeaderboardCard";
 import { Button } from "@/components/ui/button";
 import { useSession } from "@/hooks/useSession";
-import { useLeaderboard, useMyVotes, useVote } from "@/hooks/useLeaderboard";
+import {
+  useLeaderboard,
+  useLeaderboardViews,
+  useMyVotes,
+  useVote,
+} from "@/hooks/useLeaderboard";
 import { PUBLIC_SITE_ORIGIN } from "@/lib/site-url";
 
 export const Route = createFileRoute("/leaderboard")({
@@ -61,7 +66,12 @@ function LeaderboardPage() {
   const leaderboard = useLeaderboard();
   const myVotes = useMyVotes(isAuthenticated);
   const vote = useVote();
+  const views = useLeaderboardViews();
   const [pendingId, setPendingId] = useState<string | null>(null);
+
+  useEffect(() => {
+    fetch("/api/public/leaderboard-track", { method: "POST" }).catch(() => {});
+  }, []);
 
   const entries = leaderboard.data ?? [];
   const votes = myVotes.data ?? {};
@@ -91,6 +101,12 @@ function LeaderboardPage() {
           <Trophy className="size-3.5 text-primary" aria-hidden="true" />
           Link-in-bio leaderboard
         </p>
+        {views.data && views.data.views > 0 ? (
+          <p className="mt-3 inline-flex items-center gap-1.5 text-xs text-muted-foreground">
+            <Eye className="size-3.5" aria-hidden="true" />
+            {views.data.views.toLocaleString()} visits
+          </p>
+        ) : null}
         <h1 className="mt-4 font-display text-3xl font-bold sm:text-4xl">
           Link-in-bio leaderboard for developers
         </h1>

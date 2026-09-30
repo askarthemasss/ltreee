@@ -37,6 +37,7 @@ import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.
 import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 import { Route as ApiPublicEmbedClickRouteImport } from './routes/api/public/embed-click'
 import { Route as ApiPublicEmbedTrackRouteImport } from './routes/api/public/embed-track'
+import { Route as ApiPublicLeaderboardTrackRouteImport } from './routes/api/public/leaderboard-track'
 import { Route as ApiPublicProjectEventRouteImport } from './routes/api/public/project-event'
 import { Route as ApiPublicAvatarSplatRouteImport } from './routes/api/public/avatar/$'
 import { Route as ApiPublicProjectCoverSplatRouteImport } from './routes/api/public/project-cover/$'
@@ -183,6 +184,12 @@ const ApiPublicEmbedTrackRoute = ApiPublicEmbedTrackRouteImport.update({
   path: '/api/public/embed-track',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicLeaderboardTrackRoute =
+  ApiPublicLeaderboardTrackRouteImport.update({
+    id: '/api/public/leaderboard-track',
+    path: '/api/public/leaderboard-track',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiPublicProjectEventRoute = ApiPublicProjectEventRouteImport.update({
   id: '/api/public/project-event',
   path: '/api/public/project-event',
@@ -228,6 +235,7 @@ export interface FileRoutesByFullPath {
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/api/public/embed-click': typeof ApiPublicEmbedClickRoute
   '/api/public/embed-track': typeof ApiPublicEmbedTrackRoute
+  '/api/public/leaderboard-track': typeof ApiPublicLeaderboardTrackRoute
   '/api/public/project-event': typeof ApiPublicProjectEventRoute
   '/api/public/avatar/$': typeof ApiPublicAvatarSplatRoute
   '/api/public/project-cover/$': typeof ApiPublicProjectCoverSplatRoute
@@ -260,6 +268,7 @@ export interface FileRoutesByTo {
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/api/public/embed-click': typeof ApiPublicEmbedClickRoute
   '/api/public/embed-track': typeof ApiPublicEmbedTrackRoute
+  '/api/public/leaderboard-track': typeof ApiPublicLeaderboardTrackRoute
   '/api/public/project-event': typeof ApiPublicProjectEventRoute
   '/api/public/avatar/$': typeof ApiPublicAvatarSplatRoute
   '/api/public/project-cover/$': typeof ApiPublicProjectCoverSplatRoute
@@ -294,6 +303,7 @@ export interface FileRoutesById {
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/api/public/embed-click': typeof ApiPublicEmbedClickRoute
   '/api/public/embed-track': typeof ApiPublicEmbedTrackRoute
+  '/api/public/leaderboard-track': typeof ApiPublicLeaderboardTrackRoute
   '/api/public/project-event': typeof ApiPublicProjectEventRoute
   '/api/public/avatar/$': typeof ApiPublicAvatarSplatRoute
   '/api/public/project-cover/$': typeof ApiPublicProjectCoverSplatRoute
@@ -328,6 +338,7 @@ export interface FileRouteTypes {
     | '/.mcp/invoke-tool/$tool'
     | '/api/public/embed-click'
     | '/api/public/embed-track'
+    | '/api/public/leaderboard-track'
     | '/api/public/project-event'
     | '/api/public/avatar/$'
     | '/api/public/project-cover/$'
@@ -360,6 +371,7 @@ export interface FileRouteTypes {
     | '/.mcp/invoke-tool/$tool'
     | '/api/public/embed-click'
     | '/api/public/embed-track'
+    | '/api/public/leaderboard-track'
     | '/api/public/project-event'
     | '/api/public/avatar/$'
     | '/api/public/project-cover/$'
@@ -393,6 +405,7 @@ export interface FileRouteTypes {
     | '/.mcp/invoke-tool/$tool'
     | '/api/public/embed-click'
     | '/api/public/embed-track'
+    | '/api/public/leaderboard-track'
     | '/api/public/project-event'
     | '/api/public/avatar/$'
     | '/api/public/project-cover/$'
@@ -421,6 +434,7 @@ export interface RootRouteChildren {
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
   ApiPublicEmbedClickRoute: typeof ApiPublicEmbedClickRoute
   ApiPublicEmbedTrackRoute: typeof ApiPublicEmbedTrackRoute
+  ApiPublicLeaderboardTrackRoute: typeof ApiPublicLeaderboardTrackRoute
   ApiPublicProjectEventRoute: typeof ApiPublicProjectEventRoute
   ApiPublicAvatarSplatRoute: typeof ApiPublicAvatarSplatRoute
   ApiPublicProjectCoverSplatRoute: typeof ApiPublicProjectCoverSplatRoute
@@ -624,6 +638,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicEmbedTrackRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/leaderboard-track': {
+      id: '/api/public/leaderboard-track'
+      path: '/api/public/leaderboard-track'
+      fullPath: '/api/public/leaderboard-track'
+      preLoaderRoute: typeof ApiPublicLeaderboardTrackRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/project-event': {
       id: '/api/public/project-event'
       path: '/api/public/project-event'
@@ -693,6 +714,7 @@ const rootRouteChildren: RootRouteChildren = {
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
   ApiPublicEmbedClickRoute: ApiPublicEmbedClickRoute,
   ApiPublicEmbedTrackRoute: ApiPublicEmbedTrackRoute,
+  ApiPublicLeaderboardTrackRoute: ApiPublicLeaderboardTrackRoute,
   ApiPublicProjectEventRoute: ApiPublicProjectEventRoute,
   ApiPublicAvatarSplatRoute: ApiPublicAvatarSplatRoute,
   ApiPublicProjectCoverSplatRoute: ApiPublicProjectCoverSplatRoute,

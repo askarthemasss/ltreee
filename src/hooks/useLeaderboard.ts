@@ -3,6 +3,7 @@ import { useServerFn } from "@tanstack/react-start";
 import {
   castVote,
   getLeaderboard,
+  getLeaderboardViews,
   getMyVotes,
   type LeaderboardEntry,
 } from "@/lib/leaderboard.functions";
@@ -15,6 +16,14 @@ export function useLeaderboard() {
   return useQuery<LeaderboardEntry[]>({
     queryKey: leaderboardQueryKey,
     queryFn: () => fetchLeaderboard(),
+  });
+}
+
+export function useLeaderboardViews() {
+  const fetchViews = useServerFn(getLeaderboardViews);
+  return useQuery<{ views: number }>({
+    queryKey: ["leaderboard", "views"],
+    queryFn: () => fetchViews(),
   });
 }
 
