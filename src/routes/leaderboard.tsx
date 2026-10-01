@@ -111,8 +111,8 @@ function LeaderboardPage() {
           Link-in-bio leaderboard for developers
         </h1>
         <p className="mx-auto mt-3 max-w-lg text-sm text-muted-foreground">
-          The link-in-bio leaderboard: projects from LTReee developers, ranked by upvotes minus
-          downvotes. Add yours from your Arena and let the community decide.
+          The link-in-bio leaderboard is a developer project showcase for LTReee creators: submit
+          your build from your Arena, and the community ranks it with upvotes and downvotes.
         </p>
         {!isAuthenticated ? (
           <Button asChild size="sm" className="mt-5">
@@ -144,8 +144,8 @@ function LeaderboardPage() {
             <Trophy className="mx-auto size-8 text-muted-foreground" aria-hidden="true" />
             <p className="mt-4 font-medium">No projects on the leaderboard yet</p>
             <p className="mx-auto mt-1 max-w-sm text-sm text-muted-foreground">
-              Be the first. Open your Arena, switch a project on for the leaderboard, and publish
-              your page.
+              The developer project showcase is empty for now. Be the first: open your Arena, switch
+              a project on for the leaderboard, and publish your page.
             </p>
             <Button asChild className="mt-5">
               <Link to="/arena">Go to your Arena</Link>
