@@ -21,3 +21,7 @@
 ## Leaderboard (done)
 - project opt-in flag, private votes table, public totals via triggers
 - public /leaderboard page with up/down voting for signed-in users
+
+## Profile sharing (done)
+- [x] Add LTReee profile metadata and standard short-link discovery
+- [x] Add personalized 1200×630 profile social previews
