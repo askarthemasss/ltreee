@@ -40,6 +40,7 @@ import { Route as ApiPublicEmbedTrackRouteImport } from './routes/api/public/emb
 import { Route as ApiPublicLeaderboardTrackRouteImport } from './routes/api/public/leaderboard-track'
 import { Route as ApiPublicProjectEventRouteImport } from './routes/api/public/project-event'
 import { Route as ApiPublicAvatarSplatRouteImport } from './routes/api/public/avatar/$'
+import { Route as ApiPublicProfileCardUsernameRouteImport } from './routes/api/public/profile-card/$username'
 import { Route as ApiPublicProjectCoverSplatRouteImport } from './routes/api/public/project-cover/$'
 
 const IndexRoute = IndexRouteImport.update({
@@ -200,6 +201,12 @@ const ApiPublicAvatarSplatRoute = ApiPublicAvatarSplatRouteImport.update({
   path: '/api/public/avatar/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPublicProfileCardUsernameRoute =
+  ApiPublicProfileCardUsernameRouteImport.update({
+    id: '/api/public/profile-card/$username',
+    path: '/api/public/profile-card/$username',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ApiPublicProjectCoverSplatRoute =
   ApiPublicProjectCoverSplatRouteImport.update({
     id: '/api/public/project-cover/$',
@@ -238,6 +245,7 @@ export interface FileRoutesByFullPath {
   '/api/public/leaderboard-track': typeof ApiPublicLeaderboardTrackRoute
   '/api/public/project-event': typeof ApiPublicProjectEventRoute
   '/api/public/avatar/$': typeof ApiPublicAvatarSplatRoute
+  '/api/public/profile-card/$username': typeof ApiPublicProfileCardUsernameRoute
   '/api/public/project-cover/$': typeof ApiPublicProjectCoverSplatRoute
 }
 export interface FileRoutesByTo {
@@ -271,6 +279,7 @@ export interface FileRoutesByTo {
   '/api/public/leaderboard-track': typeof ApiPublicLeaderboardTrackRoute
   '/api/public/project-event': typeof ApiPublicProjectEventRoute
   '/api/public/avatar/$': typeof ApiPublicAvatarSplatRoute
+  '/api/public/profile-card/$username': typeof ApiPublicProfileCardUsernameRoute
   '/api/public/project-cover/$': typeof ApiPublicProjectCoverSplatRoute
 }
 export interface FileRoutesById {
@@ -306,6 +315,7 @@ export interface FileRoutesById {
   '/api/public/leaderboard-track': typeof ApiPublicLeaderboardTrackRoute
   '/api/public/project-event': typeof ApiPublicProjectEventRoute
   '/api/public/avatar/$': typeof ApiPublicAvatarSplatRoute
+  '/api/public/profile-card/$username': typeof ApiPublicProfileCardUsernameRoute
   '/api/public/project-cover/$': typeof ApiPublicProjectCoverSplatRoute
 }
 export interface FileRouteTypes {
@@ -341,6 +351,7 @@ export interface FileRouteTypes {
     | '/api/public/leaderboard-track'
     | '/api/public/project-event'
     | '/api/public/avatar/$'
+    | '/api/public/profile-card/$username'
     | '/api/public/project-cover/$'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -374,6 +385,7 @@ export interface FileRouteTypes {
     | '/api/public/leaderboard-track'
     | '/api/public/project-event'
     | '/api/public/avatar/$'
+    | '/api/public/profile-card/$username'
     | '/api/public/project-cover/$'
   id:
     | '__root__'
@@ -408,6 +420,7 @@ export interface FileRouteTypes {
     | '/api/public/leaderboard-track'
     | '/api/public/project-event'
     | '/api/public/avatar/$'
+    | '/api/public/profile-card/$username'
     | '/api/public/project-cover/$'
   fileRoutesById: FileRoutesById
 }
@@ -437,6 +450,7 @@ export interface RootRouteChildren {
   ApiPublicLeaderboardTrackRoute: typeof ApiPublicLeaderboardTrackRoute
   ApiPublicProjectEventRoute: typeof ApiPublicProjectEventRoute
   ApiPublicAvatarSplatRoute: typeof ApiPublicAvatarSplatRoute
+  ApiPublicProfileCardUsernameRoute: typeof ApiPublicProfileCardUsernameRoute
   ApiPublicProjectCoverSplatRoute: typeof ApiPublicProjectCoverSplatRoute
 }
 
@@ -659,6 +673,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiPublicAvatarSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/public/profile-card/$username': {
+      id: '/api/public/profile-card/$username'
+      path: '/api/public/profile-card/$username'
+      fullPath: '/api/public/profile-card/$username'
+      preLoaderRoute: typeof ApiPublicProfileCardUsernameRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/public/project-cover/$': {
       id: '/api/public/project-cover/$'
       path: '/api/public/project-cover/$'
@@ -717,6 +738,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiPublicLeaderboardTrackRoute: ApiPublicLeaderboardTrackRoute,
   ApiPublicProjectEventRoute: ApiPublicProjectEventRoute,
   ApiPublicAvatarSplatRoute: ApiPublicAvatarSplatRoute,
+  ApiPublicProfileCardUsernameRoute: ApiPublicProfileCardUsernameRoute,
   ApiPublicProjectCoverSplatRoute: ApiPublicProjectCoverSplatRoute,
 }
 export const routeTree = rootRouteImport
