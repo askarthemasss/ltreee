@@ -24,4 +24,4 @@
 
 ## Profile sharing (done)
 - [x] Add LTReee profile metadata and standard short-link discovery
-- [x] Add personalized 1200×630 profile social previews
+- [x] Add profile-identity social previews using each creator's avatar, title, and description
