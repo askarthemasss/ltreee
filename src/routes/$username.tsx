@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { PublicProfileView } from "@/components/PublicProfileView";
 import { ArenaView } from "@/components/arena/ArenaView";
+import { avatarSrc } from "@/lib/avatar";
 import { getPublicProfile } from "@/lib/public-profile.functions";
 import { profileUrl } from "@/lib/site-url";
 
@@ -40,6 +41,10 @@ export const Route = createFileRoute("/$username")({
         : description;
     const fullDescription = !isArena && profile.seo_description ? profile.seo_description : baseDescription;
     const title = isArena ? `${name} — Developer's Arena — LTReee` : profile.seo_title || `${name} — LTReee`;
+    const profileAvatar = avatarSrc(profile.avatar_url);
+    const socialImage = profileAvatar
+      ? new URL(profileAvatar, "https://ltreee.app").toString()
+      : "https://ltreee.app/og-image.jpg";
     return {
       meta: [
         { title },
@@ -48,9 +53,18 @@ export const Route = createFileRoute("/$username")({
         { property: "og:description", content: fullDescription },
         { property: "og:type", content: "profile" },
         { property: "og:url", content: url },
-        { name: "twitter:card", content: "summary" },
+        { property: "og:image", content: socialImage },
+        { property: "og:image:alt", content: `${name}'s LTReee profile` },
+        { property: "profile:username", content: profile.username },
+        { name: "twitter:card", content: "summary_large_image" },
+        { name: "twitter:image", content: socialImage },
+        { name: "twitter:image:alt", content: `${name}'s LTReee profile` },
+        { name: "ltreee:profile", content: profileUrl(profile.username) },
       ],
-      links: [{ rel: "canonical", href: url }],
+      links: [
+        { rel: "canonical", href: url },
+        { rel: "shortlink", href: profileUrl(profile.username) },
+      ],
 
       scripts: [
         {
