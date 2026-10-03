@@ -9,4 +9,4 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Public profile share images are rendered on demand from published profile data so previews stay synchronized without storing generated files.
+- Public profile share metadata uses the published avatar and identity so previews stay synchronized without storing generated files.
