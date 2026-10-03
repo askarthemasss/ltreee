@@ -52,7 +52,7 @@ export const Route = createFileRoute("/api/public/profile-card/$username")({
 
         const profile = data as unknown as ShareProfile;
         const name = profile.display_name || `@${profile.username}`;
-        const avatarUrl = profile.avatar_url
+        const avatarEndpoint = profile.avatar_url
           ? new URL(
               `/api/public/avatar/${profile.avatar_url
                 .split("/")
@@ -61,6 +61,15 @@ export const Route = createFileRoute("/api/public/profile-card/$username")({
               request.url,
             ).toString()
           : null;
+        let avatarUrl: string | null = null;
+        if (avatarEndpoint) {
+          const avatarResponse = await fetch(avatarEndpoint);
+          if (avatarResponse.ok) {
+            const mime = avatarResponse.headers.get("content-type") || "image/jpeg";
+            const bytes = new Uint8Array(await avatarResponse.arrayBuffer());
+            avatarUrl = `data:${mime};base64,${Buffer.from(bytes).toString("base64")}`;
+          }
+        }
 
         return new ImageResponse(
           <div
