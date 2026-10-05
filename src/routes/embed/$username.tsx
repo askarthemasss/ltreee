@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { getPublicProfile } from "@/lib/public-profile.functions";
+import { getEmbedToken } from "@/lib/embed-token.functions";
 import {
   EmbedLinks,
   type EmbedLayout,
@@ -29,7 +30,8 @@ export const Route = createFileRoute("/embed/$username")({
   loader: async ({ params }) => {
     const profile = await getPublicProfile({ data: { username: params.username } });
     if (!profile) throw notFound();
-    return { profile };
+    const token = await getEmbedToken({ data: { username: params.username } });
+    return { profile, token };
   },
   head: () => ({
     meta: [
@@ -46,7 +48,7 @@ export const Route = createFileRoute("/embed/$username")({
 });
 
 function EmbedPage() {
-  const { profile } = Route.useLoaderData();
+  const { profile, token } = Route.useLoaderData();
   const { layout, theme, links: selected } = Route.useSearch();
 
   const chosen = (selected ?? "").split(",").map((s) => s.trim()).filter(Boolean);
@@ -59,10 +61,11 @@ function EmbedPage() {
 
   // Report this embed view (fire-and-forget).
   useEffect(() => {
+    if (!token) return;
     void fetch("/api/public/embed-track", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ username: profile.username, layout, theme }),
+      body: JSON.stringify({ token, layout, theme }),
       keepalive: true,
     }).catch(() => undefined);
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -91,11 +94,12 @@ function EmbedPage() {
           layout={layout}
           theme={theme}
           onLinkClick={(link) => {
+            if (!token) return;
             void fetch("/api/public/embed-click", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
-                username: profile.username,
+                token,
                 linkId: link.id,
                 layout,
                 theme,
