@@ -5,7 +5,7 @@ const LAYOUTS = ["vertical", "horizontal", "grid", "icons"] as const;
 const THEMES = ["dark", "light", "transparent"] as const;
 
 const bodySchema = z.object({
-  username: z.string().min(1).max(50),
+  token: z.string().min(1).max(300),
   linkId: z.string().uuid(),
   layout: z.enum(LAYOUTS),
   theme: z.enum(THEMES),
@@ -24,13 +24,18 @@ export const Route = createFileRoute("/api/public/embed-click")({
         const parsed = bodySchema.safeParse(body);
         if (!parsed.success) return new Response("Bad request", { status: 400 });
 
-        const { username, linkId, layout, theme } = parsed.data;
+        const { verifyEmbedToken } = await import("@/lib/embed-token.server");
+        // Only clicks from a freshly rendered embed (server-signed token) count.
+        const verified = verifyEmbedToken(parsed.data.token);
+        if (!verified) return new Response("Forbidden", { status: 403 });
+
+        const { linkId, layout, theme } = parsed.data;
         const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
         const { data: profile } = await supabaseAdmin
           .from("profiles")
           .select("id")
-          .eq("username", username.toLowerCase())
+          .eq("id", verified.profileId)
           .eq("is_published", true)
           .maybeSingle();
         if (!profile) return new Response("Not found", { status: 404 });
@@ -45,11 +50,13 @@ export const Route = createFileRoute("/api/public/embed-click")({
           .maybeSingle();
         if (!link) return new Response("Not found", { status: 404 });
 
+        // One click per link per token: the unique (nonce, link_id) index rejects replays.
         await supabaseAdmin.from("embed_clicks" as never).insert({
           profile_id: profile.id,
           link_id: linkId,
           layout,
           theme,
+          nonce: verified.nonce,
         } as never);
         return new Response("ok");
       },

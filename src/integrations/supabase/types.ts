@@ -20,6 +20,7 @@ export type Database = {
           id: string
           layout: string
           link_id: string
+          nonce: string | null
           profile_id: string
           theme: string
         }
@@ -28,6 +29,7 @@ export type Database = {
           id?: string
           layout: string
           link_id: string
+          nonce?: string | null
           profile_id: string
           theme: string
         }
@@ -36,6 +38,7 @@ export type Database = {
           id?: string
           layout?: string
           link_id?: string
+          nonce?: string | null
           profile_id?: string
           theme?: string
         }
@@ -68,6 +71,7 @@ export type Database = {
           created_at: string
           id: string
           layout: string
+          nonce: string | null
           profile_id: string
           theme: string
         }
@@ -75,6 +79,7 @@ export type Database = {
           created_at?: string
           id?: string
           layout: string
+          nonce?: string | null
           profile_id: string
           theme: string
         }
@@ -82,6 +87,7 @@ export type Database = {
           created_at?: string
           id?: string
           layout?: string
+          nonce?: string | null
           profile_id?: string
           theme?: string
         }
