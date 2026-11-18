@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { supabase } from "@/integrations/supabase/client";
-import { lovable } from "@/integrations/lovable/index";
 
 const AUTH_REDIRECT_KEY = "ltreee-auth-redirect";
 
@@ -111,30 +110,30 @@ function AuthPage() {
     try {
       // Always return to this public route. The root auth listener consumes the
       // pending destination after the OAuth session has been established.
-      const result = await lovable.auth.signInWithOAuth("google", {
-        redirect_uri: window.location.origin,
+      const { error } = await supabase.auth.signInWithOAuth({
+        provider: "google",
+        options: { redirectTo: window.location.origin },
       });
-      if (result.error) {
+      if (error) {
         sessionStorage.removeItem(AUTH_REDIRECT_KEY);
         toast.error("Google sign-in failed. Please try again.");
-        return;
       }
-      if (result.redirected) return;
-
-      sessionStorage.removeItem(AUTH_REDIRECT_KEY);
-      const { data } = await supabase.auth.getUser();
-      if (!data.user) throw new Error("We couldn't confirm your Google sign-in. Please try again.");
-      goNext();
     } catch (error) {
       sessionStorage.removeItem(AUTH_REDIRECT_KEY);
-      toast.error(error instanceof Error ? error.message : "Google sign-in failed. Please try again.");
+      toast.error(
+        error instanceof Error ? error.message : "Google sign-in failed. Please try again.",
+      );
     } finally {
       setBusy(false);
     }
   }
 
   const title =
-    mode === "signup" ? "Create your LTReee" : mode === "reset" ? "Reset your password" : "Welcome back";
+    mode === "signup"
+      ? "Create your LTReee"
+      : mode === "reset"
+        ? "Reset your password"
+        : "Welcome back";
 
   return (
     <div className="flex min-h-screen flex-col">
@@ -181,14 +180,21 @@ function AuthPage() {
             ) : null}
 
             {notice ? (
-              <p role="status" className="rounded-lg bg-secondary/60 px-3 py-2 text-xs text-muted-foreground">
+              <p
+                role="status"
+                className="rounded-lg bg-secondary/60 px-3 py-2 text-xs text-muted-foreground"
+              >
                 {notice}
               </p>
             ) : null}
 
             <Button type="submit" className="w-full" disabled={busy}>
               {busy ? <Loader2 className="size-4 animate-spin" aria-hidden="true" /> : null}
-              {mode === "signup" ? "Create account" : mode === "reset" ? "Send reset link" : "Log in"}
+              {mode === "signup"
+                ? "Create account"
+                : mode === "reset"
+                  ? "Send reset link"
+                  : "Log in"}
             </Button>
           </form>
 
@@ -234,12 +240,20 @@ function AuthPage() {
               <>
                 <p>
                   New here?{" "}
-                  <button type="button" className="text-primary hover:underline" onClick={() => setMode("signup")}>
+                  <button
+                    type="button"
+                    className="text-primary hover:underline"
+                    onClick={() => setMode("signup")}
+                  >
                     Create your LTReee
                   </button>
                 </p>
                 <p>
-                  <button type="button" className="text-xs hover:underline" onClick={() => setMode("reset")}>
+                  <button
+                    type="button"
+                    className="text-xs hover:underline"
+                    onClick={() => setMode("reset")}
+                  >
                     Forgot your password?
                   </button>
                 </p>
@@ -247,7 +261,11 @@ function AuthPage() {
             ) : (
               <p>
                 Already have an account?{" "}
-                <button type="button" className="text-primary hover:underline" onClick={() => setMode("login")}>
+                <button
+                  type="button"
+                  className="text-primary hover:underline"
+                  onClick={() => setMode("login")}
+                >
                   Log in
                 </button>
               </p>

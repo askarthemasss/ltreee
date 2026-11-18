@@ -13,7 +13,6 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as UsernameRouteImport } from './routes/$username'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
-import { Route as ConnectRouteImport } from './routes/connect'
 import { Route as DevelopersRouteImport } from './routes/developers'
 import { Route as ExamplesRouteImport } from './routes/examples'
 import { Route as FreeLinkInBioRouteImport } from './routes/free-link-in-bio'
@@ -21,11 +20,8 @@ import { Route as InstagramBioLinkRouteImport } from './routes/instagram-bio-lin
 import { Route as LeaderboardRouteImport } from './routes/leaderboard'
 import { Route as LinkInBioRouteImport } from './routes/link-in-bio'
 import { Route as LinktreeAlternativeRouteImport } from './routes/linktree-alternative'
-import { Route as McpRouteImport } from './routes/mcp'
 import { Route as ResetPasswordRouteImport } from './routes/reset-password'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
-import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
 import { Route as AuthenticatedAnalyticsRouteImport } from './routes/_authenticated/analytics'
 import { Route as AuthenticatedArenaRouteImport } from './routes/_authenticated/arena'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
@@ -33,8 +29,6 @@ import { Route as AuthenticatedEmbedRouteImport } from './routes/_authenticated/
 import { Route as AuthenticatedPrivateRouteImport } from './routes/_authenticated/private'
 import { Route as AuthenticatedSettingsRouteImport } from './routes/_authenticated/settings'
 import { Route as EmbedUsernameRouteImport } from './routes/embed/$username'
-import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
-import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
 import { Route as ApiPublicEmbedClickRouteImport } from './routes/api/public/embed-click'
 import { Route as ApiPublicEmbedTrackRouteImport } from './routes/api/public/embed-track'
 import { Route as ApiPublicLeaderboardTrackRouteImport } from './routes/api/public/leaderboard-track'
@@ -59,11 +53,6 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConnectRoute = ConnectRouteImport.update({
-  id: '/connect',
-  path: '/connect',
   getParentRoute: () => rootRouteImport,
 } as any)
 const DevelopersRoute = DevelopersRouteImport.update({
@@ -101,11 +90,6 @@ const LinktreeAlternativeRoute = LinktreeAlternativeRouteImport.update({
   path: '/linktree-alternative',
   getParentRoute: () => rootRouteImport,
 } as any)
-const McpRoute = McpRouteImport.update({
-  id: '/mcp',
-  path: '/mcp',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ResetPasswordRoute = ResetPasswordRouteImport.update({
   id: '/reset-password',
   path: '/reset-password',
@@ -116,18 +100,6 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
   path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Char91DotmcpChar93ListToolsRoute =
-  Char91DotmcpChar93ListToolsRouteImport.update({
-    id: '/.mcp/list-tools',
-    path: '/.mcp/list-tools',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const Char91DotwellKnownChar93OauthProtectedResourceRoute =
-  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
-    id: '/.well-known/oauth-protected-resource',
-    path: '/.well-known/oauth-protected-resource',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const AuthenticatedAnalyticsRoute = AuthenticatedAnalyticsRouteImport.update({
   id: '/analytics',
   path: '/analytics',
@@ -163,17 +135,6 @@ const EmbedUsernameRoute = EmbedUsernameRouteImport.update({
   path: '/embed/$username',
   getParentRoute: () => rootRouteImport,
 } as any)
-const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
-  id: '/.lovable/oauth/consent',
-  path: '/.lovable/oauth/consent',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const Char91DotmcpChar93InvokeToolToolRoute =
-  Char91DotmcpChar93InvokeToolToolRouteImport.update({
-    id: '/.mcp/invoke-tool/$tool',
-    path: '/.mcp/invoke-tool/$tool',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const ApiPublicEmbedClickRoute = ApiPublicEmbedClickRouteImport.update({
   id: '/api/public/embed-click',
   path: '/api/public/embed-click',
@@ -211,7 +172,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/$username': typeof UsernameRoute
   '/auth': typeof AuthRoute
-  '/connect': typeof ConnectRoute
   '/developers': typeof DevelopersRoute
   '/examples': typeof ExamplesRoute
   '/free-link-in-bio': typeof FreeLinkInBioRoute
@@ -219,11 +179,8 @@ export interface FileRoutesByFullPath {
   '/leaderboard': typeof LeaderboardRoute
   '/link-in-bio': typeof LinkInBioRoute
   '/linktree-alternative': typeof LinktreeAlternativeRoute
-  '/mcp': typeof McpRoute
   '/reset-password': typeof ResetPasswordRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
-  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/analytics': typeof AuthenticatedAnalyticsRoute
   '/arena': typeof AuthenticatedArenaRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
@@ -231,8 +188,6 @@ export interface FileRoutesByFullPath {
   '/private': typeof AuthenticatedPrivateRoute
   '/settings': typeof AuthenticatedSettingsRoute
   '/embed/$username': typeof EmbedUsernameRoute
-  '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
-  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/api/public/embed-click': typeof ApiPublicEmbedClickRoute
   '/api/public/embed-track': typeof ApiPublicEmbedTrackRoute
   '/api/public/leaderboard-track': typeof ApiPublicLeaderboardTrackRoute
@@ -244,7 +199,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/$username': typeof UsernameRoute
   '/auth': typeof AuthRoute
-  '/connect': typeof ConnectRoute
   '/developers': typeof DevelopersRoute
   '/examples': typeof ExamplesRoute
   '/free-link-in-bio': typeof FreeLinkInBioRoute
@@ -252,11 +206,8 @@ export interface FileRoutesByTo {
   '/leaderboard': typeof LeaderboardRoute
   '/link-in-bio': typeof LinkInBioRoute
   '/linktree-alternative': typeof LinktreeAlternativeRoute
-  '/mcp': typeof McpRoute
   '/reset-password': typeof ResetPasswordRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
-  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/analytics': typeof AuthenticatedAnalyticsRoute
   '/arena': typeof AuthenticatedArenaRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
@@ -264,8 +215,6 @@ export interface FileRoutesByTo {
   '/private': typeof AuthenticatedPrivateRoute
   '/settings': typeof AuthenticatedSettingsRoute
   '/embed/$username': typeof EmbedUsernameRoute
-  '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
-  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/api/public/embed-click': typeof ApiPublicEmbedClickRoute
   '/api/public/embed-track': typeof ApiPublicEmbedTrackRoute
   '/api/public/leaderboard-track': typeof ApiPublicLeaderboardTrackRoute
@@ -279,7 +228,6 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/$username': typeof UsernameRoute
   '/auth': typeof AuthRoute
-  '/connect': typeof ConnectRoute
   '/developers': typeof DevelopersRoute
   '/examples': typeof ExamplesRoute
   '/free-link-in-bio': typeof FreeLinkInBioRoute
@@ -287,11 +235,8 @@ export interface FileRoutesById {
   '/leaderboard': typeof LeaderboardRoute
   '/link-in-bio': typeof LinkInBioRoute
   '/linktree-alternative': typeof LinktreeAlternativeRoute
-  '/mcp': typeof McpRoute
   '/reset-password': typeof ResetPasswordRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
-  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
-  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/_authenticated/analytics': typeof AuthenticatedAnalyticsRoute
   '/_authenticated/arena': typeof AuthenticatedArenaRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
@@ -299,8 +244,6 @@ export interface FileRoutesById {
   '/_authenticated/private': typeof AuthenticatedPrivateRoute
   '/_authenticated/settings': typeof AuthenticatedSettingsRoute
   '/embed/$username': typeof EmbedUsernameRoute
-  '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
-  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/api/public/embed-click': typeof ApiPublicEmbedClickRoute
   '/api/public/embed-track': typeof ApiPublicEmbedTrackRoute
   '/api/public/leaderboard-track': typeof ApiPublicLeaderboardTrackRoute
@@ -314,7 +257,6 @@ export interface FileRouteTypes {
     | '/'
     | '/$username'
     | '/auth'
-    | '/connect'
     | '/developers'
     | '/examples'
     | '/free-link-in-bio'
@@ -322,11 +264,8 @@ export interface FileRouteTypes {
     | '/leaderboard'
     | '/link-in-bio'
     | '/linktree-alternative'
-    | '/mcp'
     | '/reset-password'
     | '/sitemap.xml'
-    | '/.mcp/list-tools'
-    | '/.well-known/oauth-protected-resource'
     | '/analytics'
     | '/arena'
     | '/dashboard'
@@ -334,8 +273,6 @@ export interface FileRouteTypes {
     | '/private'
     | '/settings'
     | '/embed/$username'
-    | '/.lovable/oauth/consent'
-    | '/.mcp/invoke-tool/$tool'
     | '/api/public/embed-click'
     | '/api/public/embed-track'
     | '/api/public/leaderboard-track'
@@ -347,7 +284,6 @@ export interface FileRouteTypes {
     | '/'
     | '/$username'
     | '/auth'
-    | '/connect'
     | '/developers'
     | '/examples'
     | '/free-link-in-bio'
@@ -355,11 +291,8 @@ export interface FileRouteTypes {
     | '/leaderboard'
     | '/link-in-bio'
     | '/linktree-alternative'
-    | '/mcp'
     | '/reset-password'
     | '/sitemap.xml'
-    | '/.mcp/list-tools'
-    | '/.well-known/oauth-protected-resource'
     | '/analytics'
     | '/arena'
     | '/dashboard'
@@ -367,8 +300,6 @@ export interface FileRouteTypes {
     | '/private'
     | '/settings'
     | '/embed/$username'
-    | '/.lovable/oauth/consent'
-    | '/.mcp/invoke-tool/$tool'
     | '/api/public/embed-click'
     | '/api/public/embed-track'
     | '/api/public/leaderboard-track'
@@ -381,7 +312,6 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/$username'
     | '/auth'
-    | '/connect'
     | '/developers'
     | '/examples'
     | '/free-link-in-bio'
@@ -389,11 +319,8 @@ export interface FileRouteTypes {
     | '/leaderboard'
     | '/link-in-bio'
     | '/linktree-alternative'
-    | '/mcp'
     | '/reset-password'
     | '/sitemap.xml'
-    | '/.mcp/list-tools'
-    | '/.well-known/oauth-protected-resource'
     | '/_authenticated/analytics'
     | '/_authenticated/arena'
     | '/_authenticated/dashboard'
@@ -401,8 +328,6 @@ export interface FileRouteTypes {
     | '/_authenticated/private'
     | '/_authenticated/settings'
     | '/embed/$username'
-    | '/.lovable/oauth/consent'
-    | '/.mcp/invoke-tool/$tool'
     | '/api/public/embed-click'
     | '/api/public/embed-track'
     | '/api/public/leaderboard-track'
@@ -416,7 +341,6 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   UsernameRoute: typeof UsernameRoute
   AuthRoute: typeof AuthRoute
-  ConnectRoute: typeof ConnectRoute
   DevelopersRoute: typeof DevelopersRoute
   ExamplesRoute: typeof ExamplesRoute
   FreeLinkInBioRoute: typeof FreeLinkInBioRoute
@@ -424,14 +348,9 @@ export interface RootRouteChildren {
   LeaderboardRoute: typeof LeaderboardRoute
   LinkInBioRoute: typeof LinkInBioRoute
   LinktreeAlternativeRoute: typeof LinktreeAlternativeRoute
-  McpRoute: typeof McpRoute
   ResetPasswordRoute: typeof ResetPasswordRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
-  Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
-  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   EmbedUsernameRoute: typeof EmbedUsernameRoute
-  DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
-  Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
   ApiPublicEmbedClickRoute: typeof ApiPublicEmbedClickRoute
   ApiPublicEmbedTrackRoute: typeof ApiPublicEmbedTrackRoute
   ApiPublicLeaderboardTrackRoute: typeof ApiPublicLeaderboardTrackRoute
@@ -468,13 +387,6 @@ declare module '@tanstack/react-router' {
       path: '/auth'
       fullPath: '/auth'
       preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/connect': {
-      id: '/connect'
-      path: '/connect'
-      fullPath: '/connect'
-      preLoaderRoute: typeof ConnectRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/developers': {
@@ -526,13 +438,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LinktreeAlternativeRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/mcp': {
-      id: '/mcp'
-      path: '/mcp'
-      fullPath: '/mcp'
-      preLoaderRoute: typeof McpRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/reset-password': {
       id: '/reset-password'
       path: '/reset-password'
@@ -545,20 +450,6 @@ declare module '@tanstack/react-router' {
       path: '/sitemap.xml'
       fullPath: '/sitemap.xml'
       preLoaderRoute: typeof SitemapDotxmlRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/.mcp/list-tools': {
-      id: '/.mcp/list-tools'
-      path: '/.mcp/list-tools'
-      fullPath: '/.mcp/list-tools'
-      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/.well-known/oauth-protected-resource': {
-      id: '/.well-known/oauth-protected-resource'
-      path: '/.well-known/oauth-protected-resource'
-      fullPath: '/.well-known/oauth-protected-resource'
-      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated/analytics': {
@@ -608,20 +499,6 @@ declare module '@tanstack/react-router' {
       path: '/embed/$username'
       fullPath: '/embed/$username'
       preLoaderRoute: typeof EmbedUsernameRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/.lovable/oauth/consent': {
-      id: '/.lovable/oauth/consent'
-      path: '/.lovable/oauth/consent'
-      fullPath: '/.lovable/oauth/consent'
-      preLoaderRoute: typeof DotlovableOauthConsentRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/.mcp/invoke-tool/$tool': {
-      id: '/.mcp/invoke-tool/$tool'
-      path: '/.mcp/invoke-tool/$tool'
-      fullPath: '/.mcp/invoke-tool/$tool'
-      preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/public/embed-click': {
@@ -695,7 +572,6 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   UsernameRoute: UsernameRoute,
   AuthRoute: AuthRoute,
-  ConnectRoute: ConnectRoute,
   DevelopersRoute: DevelopersRoute,
   ExamplesRoute: ExamplesRoute,
   FreeLinkInBioRoute: FreeLinkInBioRoute,
@@ -703,15 +579,9 @@ const rootRouteChildren: RootRouteChildren = {
   LeaderboardRoute: LeaderboardRoute,
   LinkInBioRoute: LinkInBioRoute,
   LinktreeAlternativeRoute: LinktreeAlternativeRoute,
-  McpRoute: McpRoute,
   ResetPasswordRoute: ResetPasswordRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
-  Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
-  Char91DotwellKnownChar93OauthProtectedResourceRoute:
-    Char91DotwellKnownChar93OauthProtectedResourceRoute,
   EmbedUsernameRoute: EmbedUsernameRoute,
-  DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
-  Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
   ApiPublicEmbedClickRoute: ApiPublicEmbedClickRoute,
   ApiPublicEmbedTrackRoute: ApiPublicEmbedTrackRoute,
   ApiPublicLeaderboardTrackRoute: ApiPublicLeaderboardTrackRoute,
